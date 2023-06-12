@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import GameScreen from './GameScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Anagrams</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const Stack = createStackNavigator({
+  WordGame: {
+    screen: GameScreen,
+    navigationOptions: {
+      title: 'Anagrams',
+    },
   },
 });
+
+const AppContainer = createAppContainer(Stack);
+
+const App = () => {
+  return <AppContainer />;
+};
+
+export default App;
